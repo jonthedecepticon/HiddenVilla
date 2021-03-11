@@ -1,0 +1,23 @@
+﻿@inject IJSRuntime JsRuntime
+<div>
+    <div class="alert alert-info">@Title</div>
+    <span>@ChildContent</span>
+
+    <button class="btn btn-danger" @onclick="OnClickBtnMethod">blah</button>
+</div>
+
+@code {
+    [Parameter]
+    public string Title { get; set; }
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnClickBtnMethod { get; set; }
+
+    public async Task ShowToastrSuccess()
+    {
+        await JsRuntime.ToastrSuccess("blah blah blah");
+    }
+}
